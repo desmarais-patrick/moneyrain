@@ -4,9 +4,19 @@ body {
 }
 
 .container {
-  margin: 18px;
+  border-bottom: 3px solid #688;
+  border-left: 3px double #355;
+  border-radius: 2px 0 4px 4px;
+  border-right: 1px solid #e2e8e8;
+  border-top: 1px solid #e2e8e8;
+  margin: 3px;
+  padding: .1px;
   min-width: 264px;
   max-width: 600px;
+}
+
+header {
+  margin: 18px 0;
 }
 
 h1, span, input, label {
@@ -17,7 +27,7 @@ h1, span, input, label {
 h1 {
   font-size: 24px;
   line-height: 24px;
-  margin: 18px 0;
+  margin: 18px;
 }
 
 span, input, label {
@@ -26,7 +36,9 @@ span, input, label {
 }
 
 form {
+  background-color: #e2e8e8;
   margin: 18px 0;
+  padding: 9px 18px;
 }
 
 form .fields {
@@ -48,6 +60,7 @@ form .fields {
 
 form .description input,
 form .amount input {
+  background-color: #e2e8e8;
   border: 0;
   border-bottom: 1px solid #355;
   box-sizing: border-box;
@@ -58,7 +71,7 @@ form .amount input {
 }
 
 form label {
-  color: #e2e8e8;
+  color: #355;
   padding: 0 3px;
 }
 
@@ -69,26 +82,27 @@ form .actions {
 
 form .actions input {
   border: 1px solid #355;
-  color: #355;
   margin: 0;
   padding: 6px 9px;
-  outline-color: #e2e8e8;
+  outline-color: #355;
   outline-width: thin;
 }
 
 form .actions input[type='submit'] {
-  background-color: #e2e8e8;
+  background-color: #355;
   border-radius: 0 3px 3px 0;
+  color: #e2e8e8;
 }
 
 form .actions input[type='reset'] {
   background-color: #fff;
   border-radius: 3px 0 0 3px;
   border-right: 0;
+  color: #355;
 }
 
 ul {
-  margin: 18px 0;
+  margin: 18px;
   padding: 0;
 }
 
