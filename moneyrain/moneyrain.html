@@ -5,9 +5,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Transactions</h1>
+      <h1>Transactions ({{transactions.count}})</h1>
     </header>
-    <p class="empty">{{transactions.count}}</p>
     <ul>
       {{#each transactions}}
         {{> transaction}}
