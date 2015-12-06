@@ -6,6 +6,21 @@
   <div class="container">
     <header>
       <h1>Transactions ({{transactions.count}})</h1>
+
+      <form class="new-transaction">
+        <div class="fields">
+          <div class="description">
+            <input type="text" name="description" id="t_desc" autofocus /><br/><label class="description-label" for="t_desc">description</label>
+          </div>
+          <div class="amount">
+            <input type="text" name="amount" id="t_amou" /><br/><label class="amount-label" for="t_amou">amount</label>
+          </div>
+          <p class="clear"></p>
+        </div>
+        <div class="actions">
+          <input type="reset" value="reset" /><input type="submit" value="submit" />
+        </div>
+      </form>
     </header>
     <ul>
       {{#each transactions}}
@@ -20,8 +35,8 @@
     <div class="description">
       <span>{{description}}</span>
     </div>
-    <div class="value {{category}}">
-      <span>{{value}}</span>
+    <div class="amount {{category}}">
+      <span>{{amount}}</span>
     </div>
     <p class="clear"></p>
   </li>

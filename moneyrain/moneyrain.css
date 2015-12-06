@@ -4,46 +4,104 @@ body {
 }
 
 .container {
-  margin: 1em;
+  margin: 18px;
+  min-width: 264px;
   max-width: 600px;
 }
 
-header {
-  margin: 0 1em;
+h1, span, input, label {
+  color: #355;
+  font-family: 'san francisco', 'helvetica neue', sans-serif;
 }
 
-h1, span {
-  font-family: helvetica neue, sans-serif;
-  margin: 0 0 1em;
+h1 {
+  font-size: 24px;
+  line-height: 24px;
+  margin: 18px 0;
 }
 
-ul {
-  padding: 0;
+span, input, label {
+  font-size: 12px;
+  line-height: 12px;
 }
 
-li {
-  background-color: rgba(20, 60, 80, .05);
-  list-style-type: none;
-  margin: .5em;
-  padding: .5em;
+form {
+  margin: 18px 0;
+}
+
+form .fields {
+  margin: 18px 0;
 }
 
 .description {
   float: left;
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
 }
 
-.value {
+.amount {
   float: right;
   text-align: right;
-  width: 90px;
+  max-width: 90px;
+  width: 100%;
 }
 
-.value.expense span {
+form .description input,
+form .amount input {
+  border: 0;
+  border-bottom: 1px solid #355;
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  padding: 6px;
+  width: 100%;
+}
+
+form label {
+  color: #e2e8e8;
+  padding: 0 3px;
+}
+
+form .actions {
+  margin: 18px 0;
+  text-align: right;
+}
+
+form .actions input {
+  border: 1px solid #355;
+  color: #355;
+  margin: 0;
+  padding: 6px 9px;
+  outline-color: #e2e8e8;
+  outline-width: thin;
+}
+
+form .actions input[type='submit'] {
+  background-color: #e2e8e8;
+  border-radius: 0 3px 3px 0;
+}
+
+form .actions input[type='reset'] {
+  background-color: #fff;
+  border-radius: 3px 0 0 3px;
+  border-right: 0;
+}
+
+ul {
+  margin: 18px 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  margin: 9px 0;
+}
+
+.amount.expense span {
   color: #c66;
 }
 
-.value.revenue span {
+.amount.revenue span {
   color: #6c6;
 }
 

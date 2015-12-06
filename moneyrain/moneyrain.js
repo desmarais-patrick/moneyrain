@@ -6,6 +6,21 @@ if (Meteor.isClient) {
       return Transactions.find({});
     }
   });
+
+  Template.transaction.helpers({
+    amount: function () {
+      var amount;
+      try {
+        amount = parseFloat(this.value);
+        amount = amount.toFixed(2) + " $";
+      } catch (e) {
+        console.log("Template.transaction.amount",
+          "could not parse this.value as float:", this.value, e);
+        amount = "?";
+      }
+      return amount;
+    }
+  });
 }
 
 if (Meteor.isServer) {
