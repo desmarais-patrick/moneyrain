@@ -1,18 +1,11 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
+  Template.body.helpers({
+    transactions: [
+      { description: "Grocery", value: -93.66, category: "expense" },
+      { description: "Lunch", value: -18.54, category: "expense" },
+      { description: "Garage", value: -220.14, category: "expense" },
+      { description: "Gift", value: 20, category: "revenue" }
+    ]
   });
 }
 
