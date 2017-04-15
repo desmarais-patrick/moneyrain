@@ -15,7 +15,7 @@
     "url": "git+https://github.com/desmarais-patrick/moneyrain.git"
   },
   "author": "Patrick Desmarais",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/desmarais-patrick/moneyrain/issues"
   },
