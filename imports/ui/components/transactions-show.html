@@ -1,8 +1,4 @@
-<head>
-  <title>moneyrain</title>
-</head>
-
-<body>
+<template name="Transactions_show">
   <div class="container">
     <header>
       <h1>Transactions ({{transactions.count}})</h1>
@@ -28,9 +24,9 @@
       {{/each}}
     </ul>
   </div>
-</body>
+</template>
 
-<template name="transaction">
+<template name="Transaction">
   <li>
     <div class="description">
       <span>{{description}}</span>
