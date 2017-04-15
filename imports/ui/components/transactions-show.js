@@ -42,11 +42,10 @@ Template.Transactions_show.events({
     }
 
     // Add new document.
-    Transactions.insert({
+    Meteor.call('transactions.addNew', {
       description: description,
       value: value,
-      category: value > 0 ? "revenue": "expense",
-      createdAt: new Date()
+      category: value > 0 ? "revenue": "expense"
     });
 
     event.target.reset.click(); // clear form.
