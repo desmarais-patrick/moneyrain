@@ -4,6 +4,12 @@ import { Transactions } from '../../api/transactions/transactions';
 
 import './transactions-show.html';
 
+Template.Transactions_show.onCreated(function transactionsShowOnCreated() {
+  this.autorun(() => {
+    this.subscribe('transactions.all');
+  });
+});
+
 Template.Transactions_show.helpers({
   transactions: function () {
     return Transactions.find({});
