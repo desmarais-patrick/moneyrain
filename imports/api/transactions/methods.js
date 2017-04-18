@@ -4,6 +4,6 @@ import { Transactions } from './transactions.js';
 
 Meteor.methods({
   'transactions.addNew'({description, value, category}) {
-    Transactions.insert({description, value, category, createdAt: new Date()});
+    return Transactions.insert({description, value, category, createdAt: new Date()});
   },
 });

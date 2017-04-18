@@ -21,3 +21,8 @@ standard-minifier-js@2.0.0
 
 kadira:flow-router@2.12.1
 kadira:blaze-layout@2.3.0
+
+practicalmeteor:mocha@2.4.5_6
+                            # Write package tests with mocha and run them in
+                            # the browser or from the command line with
+                            # spacejam.
