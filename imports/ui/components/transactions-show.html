@@ -23,6 +23,11 @@
         {{> Transaction}}
       {{/each}}
     </ul>
+    <ul>
+      {{#each categories}}
+        {{> Category}}
+      {{/each}}
+    </ul>
   </div>
 </template>
 
@@ -35,5 +40,13 @@
       <span>{{amount}}</span>
     </div>
     <p class="clear"></p>
+  </li>
+</template>
+
+<template name="Category">
+  <li>
+    <div class="name">
+      <span>{{name}}</span>
+    </div>
   </li>
 </template>

@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 
+import { Categories } from '../../api/categories/categories';
 import { Transactions } from '../../api/transactions/transactions';
 
 import './transactions-show.html';
@@ -11,9 +12,12 @@ Template.Transactions_show.onCreated(function transactionsShowOnCreated() {
 });
 
 Template.Transactions_show.helpers({
+  categories: function () {
+    return Categories.find({});
+  },
   transactions: function () {
     return Transactions.find({});
-  }
+  },
 });
 
 Template.Transaction.helpers({
