@@ -1,6 +1,9 @@
 import { Meteor } from 'meteor/meteor';
+import { Random } from 'meteor/random';
 import { assert } from 'meteor/practicalmeteor:chai';
+import { PublicationCollector } from 'meteor/johanbrook:publication-collector'
 
+import './publications.js';
 import '../methods.js';
 import { Categories } from '../categories.js';
 
@@ -18,7 +21,7 @@ describe('Categories', () => {
       let docAddedID;
       beforeEach(() => {
         doc = {
-          name: 'Grocery',
+          name: 'Groceries',
         };
       });
       it('can add new category', () => {
@@ -28,6 +31,38 @@ describe('Categories', () => {
       });
       afterEach(() => {
         Categories.remove(docAddedID);
+      });
+    });
+  });
+
+  describe('publications', () => {
+    describe('categories.all', () => {
+      let collector;
+      beforeEach(() => {
+        collector = new PublicationCollector({userId: Random.id()});
+      });
+      it('can publish empty categories', (done) => {
+        collector.collect('categories.all', (collections) => {
+          assert.equal(collections['categories'].length, 0);
+          done();
+        });
+      });
+
+      describe('when some categories', () => {
+        beforeEach(() => {
+          Categories.insert({name: 'Groceries'});
+          Categories.insert({name: 'Gifts'});
+          Categories.insert({name: 'Insurance'});
+        });
+        it('can publish categories', (done) => {
+          collector.collect('categories.all', (collections) => {
+            assert.equal(collections['categories'].length, 3);
+            done();
+          });
+        });
+        afterEach(() => {
+          Categories.remove({});
+        });
       });
     });
   });
