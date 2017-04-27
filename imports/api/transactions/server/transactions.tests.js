@@ -3,6 +3,8 @@ import { Random } from 'meteor/random';
 import { assert } from 'meteor/practicalmeteor:chai';
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 
+import { createCategoryDoc } from '../../categories/server/categories.tests.js';
+
 import '../methods.js';
 import './publications.js';
 import { Categories } from '../../categories/categories.js';
@@ -47,9 +49,9 @@ describe('Transactions', () => {
 
       describe('when some transactions and categories', () => {
         beforeEach(() => {
-          Categories.insert({name: 'Groceries'});
-          Categories.insert({name: 'Gifts'});
-          Categories.insert({name: 'Insurance'});
+          Categories.insert(createCategoryDoc('Groceries'));
+          Categories.insert(createCategoryDoc('Gifts'));
+          Categories.insert(createCategoryDoc('Insurance'));
 
           Transactions.insert({
             category: 'expense',

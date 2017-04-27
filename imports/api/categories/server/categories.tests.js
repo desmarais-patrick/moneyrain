@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
 import { Random } from 'meteor/random';
 import { assert } from 'meteor/practicalmeteor:chai';
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
@@ -20,9 +21,7 @@ describe('Categories', () => {
       let doc;
       let docAddedID;
       beforeEach(() => {
-        doc = {
-          name: 'Groceries',
-        };
+        doc = createCategoryDoc('Groceries');
       });
       it('can add new category', () => {
         const addNew = Meteor.server.method_handlers['categories.addNew'];
@@ -50,9 +49,9 @@ describe('Categories', () => {
 
       describe('when some categories', () => {
         beforeEach(() => {
-          Categories.insert({name: 'Groceries'});
-          Categories.insert({name: 'Gifts'});
-          Categories.insert({name: 'Insurance'});
+          Categories.insert(createCategoryDoc('Groceries'));
+          Categories.insert(createCategoryDoc('Gifts'));
+          Categories.insert(createCategoryDoc('Insurance'));
         });
         it('can publish categories', (done) => {
           collector.collect('categories.all', (collections) => {
@@ -67,3 +66,12 @@ describe('Categories', () => {
     });
   });
 });
+
+// Helpers
+
+export const createCategoryDoc = (name) => {
+  check(name, String);
+  return {
+    name,
+  };
+};
