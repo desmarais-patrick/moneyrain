@@ -1,3 +1,4 @@
+import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 import { assert } from 'meteor/practicalmeteor:chai';
@@ -16,11 +17,7 @@ describe('Transactions', () => {
       let doc;
       let docAddedID;
       beforeEach(() => {
-        doc = {
-          category: 'expense',
-          description: 'Gum & chips',
-          value: 5.05,
-        };
+        doc = createTransactionDoc('expense', 'Gum & chips', 5.05);
       });
       it('can add new transaction', () => {
         const addNew = Meteor.server.method_handlers['transactions.addNew'];
@@ -53,16 +50,9 @@ describe('Transactions', () => {
           Categories.insert(createCategoryDoc('Gifts'));
           Categories.insert(createCategoryDoc('Insurance'));
 
-          Transactions.insert({
-            category: 'expense',
-            description: 'Gum & chips',
-            value: 5.05,
-          });
-          Transactions.insert({
-            category: 'income',
-            description: 'Payday',
-            value: 550,
-          });
+          Transactions.insert(
+            createTransactionDoc('expense', 'Gum & chips', 5.05));
+          Transactions.insert(createTransactionDoc('income', 'Payday', 550));
         });
         it('can publish transactions and related', (done) => {
           collector.collect('transactions.all', (collections) => {
@@ -79,3 +69,17 @@ describe('Transactions', () => {
     });
   });
 });
+
+// helpers
+
+export const createTransactionDoc = function(category, description, value) {
+  check(category, String);
+  check(description, String);
+  check(value, Number);
+
+  return {
+    category,
+    description,
+    value,
+  };
+};
